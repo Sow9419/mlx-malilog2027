@@ -10,8 +10,13 @@
 
 ```
 mlx-malilog-expo-2027/
-├── index.html                              ← Site complet (99 KB)
+├── index.html                              ← Page principale (HTML structuré & commenté)
 ├── README.md                               ← Ce fichier
+├── assets/
+│   ├── css/
+│   │   └── main.css                        ← Feuille de style (Design System v3 + DELTA REFINEMENTS)
+│   └── js/
+│       └── main.js                         ← Scripts (nav, menu, FAQ, compteurs, …)
 └── img/
     ├── hero-logistics-corridor.jpg         ← HERO principal — 1440×1080 (328KB)
     ├── strategic-vision.jpg                ← Section Vision — 900×672 (89KB)
@@ -36,6 +41,18 @@ mlx-malilog-expo-2027/
         ├── media-1→6.png                   ← Logos Partenaires Médias
         └── instit-1→6.png                  ← Logos Partenaires Institutionnels
 ```
+
+### 🗂️ Organisation du code (HTML / CSS / JS)
+
+Depuis la refactorisation, le code est divisé en 3 fichiers pour plus de maintenabilité :
+
+| Fichier | Rôle | Sections commentées |
+|---|---|---|
+| `index.html` | Structure & contenu | 5 blocs `<head>` + 16 sections `<body>` + footer |
+| `assets/css/main.css` | Styles (Design System v3 + DELTA REFINEMENTS) | 29 sections (tokens, layout, nav, hero, responsive, …) |
+| `assets/js/main.js` | Comportements | 10 modules (nav scroll, menu mobile, smooth scroll, reveal, compteurs, FAQ, lazy-load, newsletters, …) |
+
+> **Note** : les images de fond définies dans `main.css` utilisent le chemin `../../img/…` (relatif au fichier CSS). Ne pas les re-renommer `img/…` sous peine de casser le rendu.
 
 ---
 

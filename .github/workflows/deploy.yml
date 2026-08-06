@@ -1,0 +1,58 @@
+name: Déploiement malilogexpo.com
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ----------------------------------------------------------
+      # Préparation de la clé SSH (une seule fois, réutilisée partout)
+      # ----------------------------------------------------------
+      - name: Préparer la clé SSH
+        env:
+          KEY: ${{ secrets.SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      # ----------------------------------------------------------
+      # Déploiement des fichiers racine (scp brute, shell désactivé)
+      # ----------------------------------------------------------
+      - name: SCP deploy fichiers racine
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USER: ${{ secrets.SSH_USER }}
+        run: |
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            index.html \
+            "$USER@$HOST:/home/$USER/public_html/"
+
+      # ----------------------------------------------------------
+      # Déploiement du dossier assets (css + js)
+      # ----------------------------------------------------------
+      - name: SCP deploy dossier assets
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USER: ${{ secrets.SSH_USER }}
+        run: |
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r \
+            assets \
+            "$USER@$HOST:/home/$USER/public_html/"
+
+      # ----------------------------------------------------------
+      # Déploiement du dossier img (images + logos partenaires)
+      # ----------------------------------------------------------
+      - name: SCP deploy dossier img
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USER: ${{ secrets.SSH_USER }}
+        run: |
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r \
+            img \
+            "$USER@$HOST:/home/$USER/public_html/"
