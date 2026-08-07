@@ -56,3 +56,16 @@ jobs:
           scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r \
             img \
             "$USER@$HOST:/home/$USER/public_html/"
+
+      # ----------------------------------------------------------
+      # Garde-fou .htaccess : garder le fichier lisible (chmod 644)
+      # pour éviter le 403 "Server unable to read htaccess file"
+      # ----------------------------------------------------------
+      - name: Garde-fou permissions .htaccess
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USER: ${{ secrets.SSH_USER }}
+        run: |
+          printf 'chmod 644 /home/%s/public_html/.htaccess\n' "$USER" | \
+            sftp -b - -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            "$USER@$HOST" || true
