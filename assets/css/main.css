@@ -325,6 +325,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .pwt{font-size:1.0625rem;font-weight:700;color:#fff;
   line-height:1.35;margin-bottom:.3rem}
 .pwx{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.55}
+.pwhy-desc{font-size:1.0625rem;color:var(--g5);line-height:1.7;max-width:620px;
+  margin-top:1.25rem;padding:1rem 1.25rem;border-radius:.875rem;
+  background:var(--opa);border-left:3px solid var(--o)}
 
 /* ── GALERIE ── */
 #galerie{background:var(--w);padding:5rem 0}
