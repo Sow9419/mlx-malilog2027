@@ -15,6 +15,7 @@
    08. FAQ accordion (window.tf)
    09. Lazy load images (data-src)
    10. Formulaires newsletter (.comnlbtn / .ft-nl-btn)
+   11. Hero — mot rotatif animé (#hword)
    ══════════════════════════════════════════════════════════════ */
 
 /* ── ORIGINAL HEADER — Main JavaScript v4
@@ -209,5 +210,21 @@
       }
     });
   });
+
+  /* ── HERO — MOT ROTATIF ANIMÉ ── */
+  (function () {
+    var word = document.getElementById('hword');
+    if (!word) return;
+    var words = ['Connecter', 'Transporter', 'Innover'];
+    var index = 0;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(function () {
+      index = (index + 1) % words.length;
+      word.style.animation = 'none';
+      void word.offsetWidth; /* reflow pour relancer l'animation */
+      word.textContent = words[index];
+      word.style.animation = '';
+    }, 2000);
+  })();
 
 })();
