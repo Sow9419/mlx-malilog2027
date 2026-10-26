@@ -68,7 +68,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   text-transform:uppercase;color:var(--o);display:block;margin-bottom:.875rem}
 .H1{font-family:var(--ff-display);font-size:clamp(2.625rem,5.5vw,4.625rem);
   font-weight:800;font-stretch:80%;line-height:1.08;color:#fff;letter-spacing:-.02em}
-.H1 em{font-style:italic;color:var(--ol)}
+.H1 em{font-style:normal;color:var(--ol)}
 .H2{font-family:var(--ff-display);font-size:clamp(1.875rem,3vw,2.625rem);
   font-weight:800;font-stretch:80%;line-height:1.15;color:var(--n);letter-spacing:-.01em}
 .H2w{font-family:var(--ff-display);font-size:clamp(1.875rem,3vw,2.625rem);
@@ -817,7 +817,7 @@ html{scroll-padding-top:70px}
   max-width:780px;
 }
 .htitle em{
-  font-style:italic;
+  font-style:normal;
   font-weight:700;
   color:#fff;
 }
