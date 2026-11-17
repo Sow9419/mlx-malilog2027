@@ -936,6 +936,8 @@ html{scroll-padding-top:70px}
   color:rgba(255,255,255,.4);transition:color var(--dur) var(--ease)}
 .ptcell.pslot:hover .pslot-k{color:rgba(255,255,255,.65)}
 .pslot-s{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.72)}
+/* Derniere cellule seule en debut de rangee : pleine largeur */
+.ptgc .ptcell:last-child:nth-child(3n+1){grid-column:1/-1}
 /* entrée en cascade au scroll */
 .ptgc .ptcell{opacity:0}
 .ptstrip.v .ptcell{animation:ptcell .5s var(--ease) both}
@@ -948,6 +950,7 @@ html{scroll-padding-top:70px}
 .ptstrip.v .ptcell:nth-child(7){animation-delay:.35s}
 .ptstrip.v .ptcell:nth-child(8){animation-delay:.4s}
 .ptstrip.v .ptcell:nth-child(9){animation-delay:.45s}
+.ptstrip.v .ptcell:nth-child(10){animation-delay:.5s}
 @keyframes ptcell{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes ptspin{to{transform:rotate(360deg)}}
 @keyframes ptglow{from{opacity:.55}to{opacity:1}}
@@ -964,7 +967,7 @@ html{scroll-padding-top:70px}
 @media(max-width:768px){
   .ptg{grid-template-columns:1fr}
   .ptgc{grid-template-columns:repeat(2,1fr)}
-  .ptgc .ptcell:nth-child(9){grid-column:span 2}
+  .ptgc .ptcell:last-child:nth-child(odd){grid-column:span 2}
   .ptah{margin-bottom:2.75rem}
   .ptcnum{font-size:5.5rem;left:1.25rem}
   .ptcs{width:80px;height:80px;right:1.25rem;bottom:1.25rem}
