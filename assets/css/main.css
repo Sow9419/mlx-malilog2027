@@ -951,6 +951,8 @@ html{scroll-padding-top:70px}
 .ptstrip.v .ptcell:nth-child(8){animation-delay:.4s}
 .ptstrip.v .ptcell:nth-child(9){animation-delay:.45s}
 .ptstrip.v .ptcell:nth-child(10){animation-delay:.5s}
+.ptstrip.v .ptcell:nth-child(11){animation-delay:.55s}
+.ptstrip.v .ptcell:nth-child(12){animation-delay:.6s}
 @keyframes ptcell{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes ptspin{to{transform:rotate(360deg)}}
 @keyframes ptglow{from{opacity:.55}to{opacity:1}}
